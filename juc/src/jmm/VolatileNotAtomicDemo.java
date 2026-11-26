@@ -1,5 +1,7 @@
 package jmm;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * volatile 保证可见性，但不保证原子性（i++ 的经典坑）
  * <p>
@@ -16,7 +18,7 @@ public class VolatileNotAtomicDemo {
     // 加 volatile：可见性有了，但++仍然不是原子操作
     static volatile int count = 0;
     // 对比：AtomicInteger 用 CAS 保证读改写三步原子
-    static java.util.concurrent.atomic.AtomicInteger atomicCount = new java.util.concurrent.atomic.AtomicInteger(0);
+    static AtomicInteger atomicCount = new AtomicInteger(0);
 
     public static void main(String[] args) throws InterruptedException {
         int threadNum = 10;
